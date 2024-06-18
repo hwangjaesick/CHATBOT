@@ -2,9 +2,9 @@ from azure.keyvault.secrets import SecretClient
 from azure.identity import ClientSecretCredential
 import logging
 
-KVUri = f"https://lge-ai-dev-kv.vault.azure.net"
+KVUri = {KVUri}
 
-credential = ClientSecretCredential(tenant_id='5069cde4-642a-45c0-8094-d0c2dec10be3',client_id='641926ec-ef4e-40d3-87bd-1256d35fbd74',client_secret='n8I8Q~mGtUTnjw7-6AdDxvFpSR-hSmf6--6sIb4b')
+credential = ClientSecretCredential(tenant_id={tenant_id},client_id={client_id},client_secret={client_secret})
 client = SecretClient(vault_url=KVUri, credential=credential)
 
 keyvault_values = {}
