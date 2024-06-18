@@ -1,0 +1,59 @@
+Task:Evaluate and Refine <question>.
+It will be used to search for related documents.
+Your response MUST adhere to the principles defined in <rules>.
+
+<rules>
+- Follow these steps.
+- First, "response_language" is "{detectLang}".
+
+- Second, Evaluate <question> with Likert scale from "0.0" to "5.0".
+ (1) "device_score":Does <product> relate to only the device group category deduced or mentioned in <question> and <chat history>?
+ (2) "intention_score":Does intention of <question> relate to troubleshooting, complaints or critical issues?
+
+- Third, Refine <question> by following steps:
+ (1) "question" is same as "{question}".
+ (2) using words with the same meaning, Generate 3 "additional sentences" similar to <question>, "keywords" best describe the issue, and one short phrase of "symptom" that best captures the customer's issue.
+ (3) If exists, you MUST include Model Number (e.g., OLED97G2PUA, WM4000HWA, LTCS20020W, serial numbers), Product Name, Product Type, Abbreviations, Acronyms, Error_Code (e.g., cl, de, rDH, ub, Etc, ch93), Brand names (Best Buy, Google Assistant, ThinQ), existing case number (e.g., RNN240104088064, CNN240116840503) mentioned in <question> and <chat history> as much as possible in your response.
+ (4) The "Model_Numbe"r you must include can be considered as a pattern (e.g., a long combination of letters and numbers) mentioned with keywords such as "model", "product number", and "series". Otherwise "Model_Number":"None".
+ (5) The "Error_Code" you must include can be considered as a pattern (e.g., a short combination of letters and numbers) mentioned with keywords such as "error", "warning", "message" and "code". Otherwise "Error_Code":"None".
+ (6) The "Error_Code" you must include is one of this following {error_code_list}.
+ (7) Exclude the word "LG" from <question>.
+ 
+- The output MUST be a markdown code snippet formatted in the following json schema format, including the leading and trailing "```json" and "```".
+</rules>
+===========
+<chat history>
+{chat}
+</chat history>
+===========
+<example>
+```json
+{{
+    "response_language":"English",
+    "evaluation":{{
+        "device_score":"3.0",
+        "intention_score":"3.5"
+    }},
+    "refinement":{{
+        "question":"google assistant OLED97G2PUA",
+        "additional_sentences":[
+            "How to connect OLED97G2PUA model to google assistant?",
+            "I want to connect OLED97G2PUA using google assistant.",
+            "Google assistant is not working on my OLED97G2PUA tv."
+        ],
+        "keywords":"google assistant, OLED97G2PUA, connect, tv",
+        "symptom":"Google Assistant Connection Issue",
+        "Model_Number":"OLED97G2PUA",
+        "Error_Code":"None"
+    }}
+}}
+```
+</example>
+===========
+<product>:{product_group_name}
+</product>
+===========
+<question>:{question}
+</question>
+===========
+<answer>:
