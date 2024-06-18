@@ -44,8 +44,7 @@ def main(mytimer: func.TimerRequest) -> None:
         logger.info(f"start : {start_creation_date_utc}")
         logger.info(f"end : {end_creation_date_utc}")
         
-        # url = 'https://sqslec61id.execute-api.ap-northeast-2.amazonaws.com/postDailyContact'
-        url = 'https://4rz1xg9u5b.execute-api.ap-northeast-2.amazonaws.com/postDailyContactProd'
+        url = {url}
 
         for corp_cd in corp_cd_list:
 
@@ -133,7 +132,7 @@ def main(mytimer: func.TimerRequest) -> None:
 
                 data = json.loads(item.to_json())
                 body = {"auth_code": "S10",
-                    "auth_key": "5770abd8c81fc290a60bd95313b4a258ad9714eb4090fd7d3da079aeca64f264b2164ca28856d82c3da2023b0e50b50b88515fa6eb9e25fa866c7425bbf480ad",
+                    "auth_key": {auth_key},
                     "data": data
                     }
                 
