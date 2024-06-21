@@ -54,7 +54,7 @@ def preprocess_thoughts_process(thoughts_process, documents, query, chat_history
 def load_balancing(token_size, type):
     logger.info("###### Function Name : load_balancing")
 
-    url = "https://europe.lg-chatbot.com/api/chat/getOpenAi"
+    url = "{URL}"
     if type == "gpt":
         
         data = {
